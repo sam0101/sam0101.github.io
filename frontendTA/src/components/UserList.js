@@ -25,9 +25,9 @@ class UserList extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
     }
     handleTableChange = (type, { page, sizePerPage }) => {
-        this.UserList(page - 1, sizePerPage);
+        this.UserList(page-1, sizePerPage);
     };
-    UserList(page = 1, sizePerPage = 25) {
+    UserList(page = 0, sizePerPage = 25) {
         fetch(Api.baseUrl() + "?page=" + page + "&size=" + sizePerPage, {
             method: "GET",
             headers: {
@@ -132,7 +132,7 @@ class UserList extends React.Component {
                                     <RemotePagination
                                         columns={columns}
                                         data={data}
-                                        page={page}
+                                        page={page+1}
                                         sizePerPage={sizePerPage}
                                         totalSize={total}
                                         onTableChange={this.handleTableChange}
